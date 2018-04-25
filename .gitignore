@@ -1,0 +1,19 @@
+//Project directories to be ignored
+node_modules/
+build/
+
+//LOGs from npm or yarn
+npm-debug.log
+yarn-error.log
+
+//OS releated files
+.DS_Store
+
+//IDE settings
+.vscode/
+
+//ENV variables belongs only to one environment
+/*.env
+
+//Only one is accenpted by HEROKU, so YARN
+package-lock.json
