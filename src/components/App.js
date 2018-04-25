@@ -35,7 +35,7 @@ const ComponentStyles = {
     render() {
       return (
         <div className="tempcontainer" style={ComponentStyles}>
-          <KanvasContainer />
+          {/* <KanvasContainer /> */}
           <VideoContainer  />
         </div>
       )
@@ -50,4 +50,4 @@ const ComponentStyles = {
     return { state }
   }
 
-  export default connect(mapStateToProps, null)(Radium(App))
+  export default connect(mapStateToProps, null, null, { withRef: true })(Radium(App))

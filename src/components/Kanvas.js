@@ -32,9 +32,10 @@ class Kanvas extends Component {
   }
 
   setWebGl = () => {
-    const glEl = this.props.canvasRef.current
-    this.gl = this.initWebGL(glEl)
-    console.log('this.gl', this.gl)
+    // const glEl = this.props.canvasRef.current
+    // this.gl = this.initWebGL(glEl)
+    console.log('this.props', this.props)
+    console.log('this.props.wrapped', this.props.getWrappedInstance())
   }
 
   initWebGL = (elCanvas) => {

@@ -20,5 +20,5 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const VideoContainer = connect(mapStateToProps, mapDispatchToProps)(VideoPlayer)
+const VideoContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(VideoPlayer)
 export default VideoContainer

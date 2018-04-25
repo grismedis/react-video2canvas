@@ -59,8 +59,8 @@ class VideoPlayer extends Component {
   }
 
   setPlayer(){
-    console.log('this.props', this.props)
-    const selector = this.props.videoEl.current
+    console.log('this.props', this.props.getWrappedInstance().videoEl)
+    const selector = this.props.getWrappedInstance().videoEl
     this.player =  new plyr(selector, PLYR_CONFIG)
   }
 
