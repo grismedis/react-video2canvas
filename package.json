@@ -1,5 +1,5 @@
 {
-  "name": "min-sample",
+  "name": "react-video2canvas",
   "version": "1.0.0",
   "description": "minimum example of video to canvas",
   "main": "index.js",
