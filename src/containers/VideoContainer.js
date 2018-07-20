@@ -6,8 +6,8 @@ import { toggleVolume, togglePlay } from '../store/actions/player';
 const mapStateToProps = (state) => {
   return {
     volume: state.player.volume,
-    sources: state.player.sources,
-    videoEl: state.player.videoEl,
+    videoSource: state.player.videoSource,
+    // videoEl: state.player.videoEl,
   }
 }
 

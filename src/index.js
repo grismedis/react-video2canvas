@@ -6,20 +6,20 @@ import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 import configureStore from './store/configure-store'
 
-const initialState = {
-  player :{
-    isFullScreen: false,
-    isPlaying: false,
-    isMute: false,
-    volume: 0.5,
-    videoState: 'INIT',
-    sources: [{src: '', type: 'video/mp4'}],
-    videoEl: null,
-    canvasEl: null,
-  }
-}
+// const initialState = {
+//   player :{
+//     isFullScreen: false,
+//     isPlaying: false,
+//     isMute: false,
+//     volume: 0.5,
+//     videoState: 'INIT',
+//     sources: [{src: '', type: 'video/mp4'}],
+//     videoEl: null,
+//     canvasEl: null,
+//   }
+// }
 
-const store = configureStore.store(initialState)
+const store = configureStore.store()
 
 const rootEl = document.getElementById('root')
 

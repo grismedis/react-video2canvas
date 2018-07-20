@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Radium from 'radium'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
-import KanvasContainer from '../containers/KanvasContainer'
+import Kanvas from './Kanvas'
 import VideoContainer from '../containers/VideoContainer'
 
 const ComponentStyles = {
@@ -20,14 +20,17 @@ const ComponentStyles = {
     constructor(props){
       super(props)
       this.state = {
-        videoEl: React.createRef(),
-        canvasEl: React.createRef(),
-        sources: [{
-          src: "https://coverr.co/s3/mp4/Mini-boat.mp4",
-          type: "video/mp4"}],
+        videoEl: null,
+        canvasEl: null,
+        videoRef: React.createRef(),
+        canvasRef: React.createRef(),
       }
     }
-
+    componentWillMount(){
+      const videoEl = this.state.videoRef
+      const canvasEl = this.state.canvasRef
+      this.setState({ videoEl, canvasEl })
+    }
     componentDidMount(){
       const { dispatch } = this.props
     }
@@ -35,8 +38,8 @@ const ComponentStyles = {
     render() {
       return (
         <div className="tempcontainer" style={ComponentStyles}>
-          {/* <KanvasContainer /> */}
-          <VideoContainer  />
+          <VideoContainer  videoRef ={ this.state.videoRef }/>
+          <Kanvas canvasRef={ this.state.canvasRef } videoEl= { this.state.videoEl }/>
         </div>
       )
     }
@@ -50,4 +53,4 @@ const ComponentStyles = {
     return { state }
   }
 
-  export default connect(mapStateToProps, null, null, { withRef: true })(Radium(App))
+  export default connect(mapStateToProps, null)(Radium(App))

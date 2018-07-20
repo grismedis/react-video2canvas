@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Radium from 'radium'
 
@@ -12,57 +13,23 @@ const KanvasStyles = {
 }
 
 class Kanvas extends Component {
-  constructor(){
-    super()
-
-    this.gl = null
-    this.videoEl = null
-  }
-
-  componentWillMount() {
-    console.log('Kanvas about to mount')
-  }
-
-  componentDidMount() {
-    this.setWebGl()
-  }
-
-  componentWillUnmount(){
-    console.log('destroy Kanvas')
-  }
-
-  setWebGl = () => {
-    // const glEl = this.props.canvasRef.current
-    // this.gl = this.initWebGL(glEl)
-    console.log('this.props', this.props)
-    console.log('this.props.wrapped', this.props.getWrappedInstance())
-  }
-
-  initWebGL = (elCanvas) => {
-    try {
-      return elCanvas.getContext('webgl') || elCanvas.getContext('experimental-webgl')
-    } catch (e) {
-      alert('Browser does not support webGL')
-      console.log('error with webGL init', e)
-    }
-  }
-
-  getVideoEl = () => {
-    this.videoEl = this.props.videoEl
-    console.log('this.videoEl', this.videoEl)
+  constructor(props){
+    super(props)
   }
 
   draw = () => {
-    this.videoEl = this.props.videoEl
-    if (this.vidEl.paused || this.vidEl.stopped) return false
-    this.gl.canvas.getContext('2d').drawImage(this.videoEl.current, 0, 0, 300, 150)
+    const vidEl = this.props.videoEl.current
+    const glCanvas = this.props.canvasRef.current
+    if (vidEl.paused || vidEl.stopped) return false
+    glCanvas.getContext('2d').drawImage(vidEl, 0, 0, 300, 150)
     setTimeout(this.draw, 30)
   }
 
   render() {
+    const { canvasRef } = this.props
     return (
       <canvas
-        ref={this.props.canvasEl}
+        ref={canvasRef}
         className="glcanvas"
         style={ KanvasStyles }
         onClick={ this.draw }

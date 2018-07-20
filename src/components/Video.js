@@ -23,7 +23,6 @@ const VideoStyles = {
 class VideoPlayer extends Component {
   constructor(props) {
     super(props)
-
     this.player = null
   }
 
@@ -59,14 +58,13 @@ class VideoPlayer extends Component {
   }
 
   setPlayer(){
-    console.log('this.props', this.props.getWrappedInstance().videoEl)
-    const selector = this.props.getWrappedInstance().videoEl
+    const selector = this.props.videoRef.current
     this.player =  new plyr(selector, PLYR_CONFIG)
   }
 
   setPlayerEvents() {
     this.player.on('canplay', () => {
-        this.props.videoLoaded(this.props.sources.src)
+        // this.props.videoLoaded(this.props.sources.src)
         this.player.play()
       }
     )
@@ -82,22 +80,21 @@ class VideoPlayer extends Component {
   }
 
   render() {
-    const { sources, videoEl } = this.props
+    const { videoSource, videoRef } = this.props
+
     return(
         <video
-          ref={videoEl}
+          autoPlay
+          ref={videoRef}
           className={"video-player"}
           preload={this.props.preload}
           poster={this.props.poster}
           style={ VideoStyles }
         >
-          {sources.map((source, index) =>
-            <source
-              key={index}
-              src={source.src}
-              type={source.type}
-            />
-          )}
+          <source
+            src={videoSource.src}
+            type={videoSource.container}
+          />
         </video>
     )
   }
@@ -107,12 +104,10 @@ VideoPlayer.propTypes = {
   type: PropTypes.oneOf(['video', 'youtube']),
   className: PropTypes.string,
   poster: PropTypes.string,
-  sources: PropTypes.arrayOf(
-    PropTypes.shape({
+  videoSource: PropTypes.shape({
       src: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+      container: PropTypes.string.isRequired,
+    }).isRequired,
   volume: PropTypes.number,
   videoEl: PropTypes.object,
 }

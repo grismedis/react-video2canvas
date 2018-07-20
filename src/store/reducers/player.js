@@ -19,12 +19,15 @@ import {
     isMute: false,
     volume: 0.5,
     video: 'INIT',
-    sources: [{src: '', type: 'video/mp4'}],
+    videoSource: {
+      src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      container: "video/mp4",
+    },
     videoEl: null,
     canvasEl: null,
   }
 
-  const player = (state =  initialState, action) => {
+  const player = (state = initialState, action) => {
     switch (action.type) {
       case TOGGLE_VOLUME:
         return {

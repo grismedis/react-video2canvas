@@ -7,6 +7,6 @@ const mapStateToProps = state => ({
   canvasEl: state.player.canvasEl,
 })
 
-const KanvasContainer = connect (mapStateToProps, null)(Kanvas)
+const KanvasContainer = connect (null, null)(Kanvas)
 
 export default KanvasContainer
