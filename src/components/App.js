@@ -7,13 +7,16 @@ import Kanvas from './Kanvas'
 import VideoContainer from '../containers/VideoContainer'
 
 const ComponentStyles = {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    width: '1280px',
+    height: 'auto',
+    // display: 'flex',
+    // flexDirection: 'column',
     flexWrap: 'nowrap',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch'
+    // justifyContent: 'flex-start',
+    // alignItems: 'stretch',
+    backgroundColor: 'pink',
+    // overflow: 'hidden',
+    margin: '0',
   }
 
   class App extends Component {

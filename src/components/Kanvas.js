@@ -6,10 +6,13 @@ import Radium from 'radium'
 
 const KanvasStyles = {
   display: 'block',
-  margin: '0 auto',
-  maxWidth: '100%',
-  minWidth: '60%',
+  // margin: '0 auto',
+  // width: '1280px',
+  // height: '720px',
+  // minWidth: '60%',
   backgroundColor: 'red',
+  // marginLeft: '620px',
+  margin: '0'
 }
 
 class Kanvas extends Component {
@@ -21,6 +24,8 @@ class Kanvas extends Component {
     const vidEl = this.props.videoEl.current
     const glCanvas = this.props.canvasRef.current
     if (vidEl.paused || vidEl.stopped) return false
+    // console.log('vidEl.videoWidth', vidEl.videoWidth);
+    // console.log('vidEl.videoHeigh', vidEl.videoHeigh);
     glCanvas.getContext('2d').drawImage(vidEl, 0, 0, 300, 150)
     setTimeout(this.draw, 30)
   }

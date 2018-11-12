@@ -16,8 +16,11 @@ import {
 
 const VideoStyles = {
   display: 'block',
-  margin: '0 auto',
-  maxWidth: '10%',
+  margin: '0',
+  // minWidth: '10%',
+  width: '1280px',
+  height: '720px',
+  // float: 'left',
 }
 
 class VideoPlayer extends Component {
