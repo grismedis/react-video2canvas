@@ -5,7 +5,7 @@ import Radium from 'radium'
 
 
 const KanvasStyles = {
-  display: 'block',
+  // display: 'block',
   // margin: '0 auto',
   // width: '1280px',
   // height: '720px',
@@ -31,12 +31,14 @@ class Kanvas extends Component {
   }
 
   render() {
-    const { canvasRef } = this.props
+    const { canvasRef, shouldShowCanvas } = this.props
+    const divStyle2 = shouldShowCanvas ? {display: 'block'} : {display: 'none'}
+    console.log('should show Canvas', shouldShowCanvas)
     return (
       <canvas
         ref={canvasRef}
         className="glcanvas"
-        style={ KanvasStyles }
+        style={ Object.assign(KanvasStyles, divStyle2) }
         onClick={ this.draw }
       >
         No love for WebGL in this browser.

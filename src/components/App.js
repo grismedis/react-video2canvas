@@ -7,7 +7,7 @@ import Kanvas from './Kanvas'
 import VideoContainer from '../containers/VideoContainer'
 
 const ComponentStyles = {
-    width: '1280px',
+    width: '640px',
     height: 'auto',
     // display: 'flex',
     // flexDirection: 'column',
@@ -27,6 +27,7 @@ const ComponentStyles = {
         canvasEl: null,
         videoRef: React.createRef(),
         canvasRef: React.createRef(),
+        shouldShowCanvas: true,
       }
     }
     componentWillMount(){
@@ -42,7 +43,14 @@ const ComponentStyles = {
       return (
         <div className="tempcontainer" style={ComponentStyles}>
           <VideoContainer  videoRef ={ this.state.videoRef }/>
-          <Kanvas canvasRef={ this.state.canvasRef } videoEl= { this.state.videoEl }/>
+          <Kanvas
+            canvasRef={ this.state.canvasRef }
+            videoEl= { this.state.videoEl }
+            shouldShowCanvas={this.state.shouldShowCanvas}
+          />
+          <button onClick={(e) => this.setState({shouldShowCanvas: !this.state.shouldShowCanvas})}>
+            Click Me
+          </button>
         </div>
       )
     }

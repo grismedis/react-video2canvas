@@ -18,8 +18,8 @@ const VideoStyles = {
   display: 'block',
   margin: '0',
   // minWidth: '10%',
-  width: '1280px',
-  height: '720px',
+  width: '640px',
+  height: '360px',
   // float: 'left',
 }
 
